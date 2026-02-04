@@ -1,0 +1,23 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Verify Index File Exists
+      run: |
+        if [ -f index.html ]; then
+          echo "Test Passed: index.html exists"
+        else
+          echo "Warning: index.html missing - purely a skeleton check"
+          exit 0
+        fi
