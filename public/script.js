@@ -10,3 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load tasks will be called here later (Issue #9)
 });
 
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const filterType = button.dataset.filter;
+        filterTasks(filterType);
+    });
+});
