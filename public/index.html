@@ -8,23 +8,19 @@
 </head>
 <body>
     <div id="app">
-        <!-- Components will be injected here by other members -->
-        <header id="main-header"></header>
-        
+        <header id="main-header">
+            <h1>My To-Do List</h1>
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <span class="toggle-icon" aria-hidden="true">🌙</span>
+                <span class="toggle-label">Dark Mode</span>
+            </button>
+        </header>
+
         <main id="main-content">
-            <!-- Search Bar will go here (Issue #19) -->
             <div id="search-container"></div>
-
-            <!-- Input Section (Issue #5 & #11) -->
             <div id="input-section"></div>
-
-            <!-- Task List (Issue #10) -->
             <ul id="task-list"></ul>
-            
-            <!-- Empty State (Issue #17) -->
             <div id="empty-state"></div>
-            
-            <!-- Filter Controls (Issue #13) -->
             <div id="filter-controls"></div>
         </main>
 
