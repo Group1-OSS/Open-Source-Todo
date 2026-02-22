@@ -1,35 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Open Source To-Do App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="app">
-        <!-- Components will be injected here by other members -->
-        <header id="main-header"></header>
-        
-        <main id="main-content">
-            <!-- Search Bar will go here (Issue #19) -->
-            <div id="search-container"></div>
+      <!-- Components will be injected here by other members -->
+      <header id="main-header"></header>
 
-            <!-- Input Section (Issue #5 & #11) -->
-            <div id="input-section"></div>
+      <main id="main-content">
+        <!-- Search Bar will go here (Issue #19) -->
+        <div id="search-container"></div>
 
-            <!-- Task List (Issue #10) -->
-            <ul id="task-list"></ul>
-            
-            <!-- Empty State (Issue #17) -->
-            <div id="empty-state"></div>
-            
-            <!-- Filter Controls (Issue #13) -->
-            <div id="filter-controls"></div>
-        </main>
+        <!-- Input Section (Issue #5 & #11) -->
+        <div id="input-section">
+          <div class="input-group">
+            <input
+              type="text"
+              id="task-input"
+              placeholder="What needs to be done?"
+            />
+            <button id="add-btn">Add Task</button>
+          </div>
+        </div>
 
-        <footer id="main-footer"></footer>
+        <!-- Task List (Issue #10) -->
+        <ul id="task-list"></ul>
+
+        <!-- Empty State (Issue #17) -->
+        <div id="empty-state"></div>
+
+        <!-- Filter Controls (Issue #13) -->
+        <div id="filter-controls"></div>
+      </main>
+
+      <footer id="main-footer"></footer>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
