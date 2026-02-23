@@ -10,3 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load tasks will be called here later (Issue #9)
 });
 
+function deleteTask(id) {
+tasks = tasks.filter(task => task.id !== id);
+renderTasks();
+// If using local storage (Issue #9), call saveTasks() here
+}
