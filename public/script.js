@@ -1,12 +1,58 @@
 // State Management
 let tasks = [];
 
-// DOM Elements (Will be populated as elements are added)
-const taskList = document.getElementById('task-list');
+// DOM Elements
+const taskList = document.getElementById("task-list");
+const taskInput = document.getElementById("task-input");
+const prioritySelect = document.getElementById("priority-select");
+const addTaskBtn = document.getElementById("add-task-btn");
 
-// Initial Render
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize App
+document.addEventListener("DOMContentLoaded", () => {
     console.log("App Initialized");
-    // Load tasks will be called here later (Issue #9)
+
+    addTaskBtn.addEventListener("click", addTask);
 });
 
+// Add Task Function
+function addTask() {
+
+    const text = taskInput.value.trim();
+    const priority = prioritySelect.value;
+
+    if (text === "") return;
+
+    const task = {
+        text: text,
+        completed: false,
+        priority: priority
+    };
+
+    tasks.push(task);
+
+    taskInput.value = "";
+
+    renderTasks();
+}
+
+// Render Tasks
+function renderTasks() {
+
+    taskList.innerHTML = "";
+
+    tasks.forEach((task) => {
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+        ${task.text}
+        <span class="priority ${task.priority}">
+            ${task.priority}
+        </span>
+        `;
+
+        taskList.appendChild(li);
+
+    });
+
+}
