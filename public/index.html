@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Source To-Do App</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Source To-Do App</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="app">
-        <!-- Components will be injected here by other members -->
-        <header id="main-header"></header>
-        
-        <main id="main-content">
-            <!-- Search Bar will go here (Issue #19) -->
-            <div id="search-container"></div>
 
-            <!-- Input Section (Issue #5 & #11) -->
-            <div id="input-section"></div>
+<div id="app">
 
-            <!-- Task List (Issue #10) -->
-            <ul id="task-list"></ul>
-            
-            <!-- Empty State (Issue #17) -->
-            <div id="empty-state"></div>
-            
-            <!-- Filter Controls (Issue #13) -->
-            <div id="filter-controls"></div>
-        </main>
+<header id="main-header"></header>
 
-        <footer id="main-footer"></footer>
-    </div>
-    <script src="script.js"></script>
+<main id="main-content">
+
+<div id="search-container"></div>
+
+<!-- Input Section -->
+<div id="input-section">
+
+<input type="text" id="task-input" placeholder="Enter a task">
+
+<select id="priority-select">
+<option value="Low">Low Priority</option>
+<option value="Medium">Medium Priority</option>
+<option value="High">High Priority</option>
+</select>
+
+<button id="add-task-btn">Add Task</button>
+
+</div>
+
+<!-- Task List -->
+<ul id="task-list"></ul>
+
+<div id="empty-state"></div>
+
+<div id="filter-controls"></div>
+
+</main>
+
+<footer id="main-footer"></footer>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
