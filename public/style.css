@@ -19,4 +19,27 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+* Main Container */
+#main-content {
+padding: 2rem;
+flex: 1;
+}
+/* Task List Styling */
+#task-list {
+list-style: none;
+margin-top: 1rem;
+}
+.task-item {
+background: white;
+padding: 1rem;
+margin-bottom: 0.5rem;
+border-radius: 8px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+display: flex;
+justify-content: space-between;
+align-items: center;
+transition: transform 0.2s;
+}
+.task-item:hover {
+transform: translateY(-2px);
+}
