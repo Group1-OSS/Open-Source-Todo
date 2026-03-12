@@ -25,7 +25,11 @@
             <div id="empty-state"></div>
             
             <!-- Filter Controls (Issue #13) -->
-            <div id="filter-controls"></div>
+            <div id="filter-controls"><div class="filters">
+    <button onclick="filterTasks('all')">All</button>
+    <button onclick="filterTasks('active')">Active</button>
+    <button onclick="filterTasks('completed')">Completed</button>
+</div></div>
         </main>
 
         <footer id="main-footer"></footer>
