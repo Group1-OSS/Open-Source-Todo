@@ -10,3 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load tasks will be called here later (Issue #9)
 });
 
+//add task complete toggel
+function toggleTask(id) {
+    tasks = tasks.map(task => {
+        if (task.id === id) {
+            return { ...task, completed: !task.completed };
+        }
+        return task;
+    });
+    renderTasks();
+}
