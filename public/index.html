@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://assets.zenbuten.com/notepad.png" sizes="196x196" />
     <title>Open Source To-Do App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
         <!-- Components will be injected here by other members -->
-        <header id="main-header"></header>
+        <header id="main-header">
+            <!-- Icon and title -->
+            <div id="icon-container" style="display:flex; padding-top: 16px;">
+                <img src="https://assets.zenbuten.com/notepad.png" alt="notepad icon" width="48px" height="48px" />
+                <h3>Open Source To-Do</h3>
+            </div>
+        </header>
         
         <main id="main-content">
             <!-- Search Bar will go here (Issue #19) -->
