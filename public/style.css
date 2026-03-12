@@ -1,22 +1,274 @@
+/* ============================================
+   DESIGN TOKENS — Global CSS Custom Properties
+   ============================================ */
+
+:root {
+    /* --- Brand Colors --- */
+    --color-primary:        #6366f1; /* Indigo — main actions */
+    --color-primary-hover:  #4f46e5;
+    --color-danger:         #ef4444; /* Delete / destructive */
+    --color-danger-hover:   #dc2626;
+    --color-success:        #22c55e; /* Completed tasks */
+
+    /* --- Light Mode Surface Colors (default) --- */
+    --color-bg:             #f4f7f9;
+    --color-surface:        #ffffff;
+    --color-surface-alt:    #f0f2f5; /* Subtle secondary panels */
+    --color-border:         #e2e8f0;
+
+    /* --- Light Mode Text Colors --- */
+    --color-text-primary:   #1e293b;
+    --color-text-secondary: #64748b;
+    --color-text-muted:     #94a3b8;
+    --color-text-on-primary:#ffffff; /* Text placed on --color-primary */
+
+    /* --- Typography --- */
+    --font-sans:   'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-mono:   'Courier New', Courier, monospace;
+
+    --text-xs:   0.75rem;   /*  12px */
+    --text-sm:   0.875rem;  /*  14px */
+    --text-base: 1rem;      /*  16px */
+    --text-lg:   1.125rem;  /*  18px */
+    --text-xl:   1.25rem;   /*  20px */
+    --text-2xl:  1.5rem;    /*  24px */
+
+    --font-weight-normal:  400;
+    --font-weight-medium:  500;
+    --font-weight-bold:    700;
+
+    /* --- Spacing Scale --- */
+    --space-1:  0.25rem;
+    --space-2:  0.5rem;
+    --space-3:  0.75rem;
+    --space-4:  1rem;
+    --space-6:  1.5rem;
+    --space-8:  2rem;
+    --space-12: 3rem;
+
+    /* --- Shape & Depth --- */
+    --radius-sm:  0.25rem;
+    --radius-md:  0.5rem;
+    --radius-lg:  0.75rem;
+    --radius-full: 9999px;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    /* --- Transitions --- */
+    --transition-fast:   150ms ease;
+    --transition-normal: 250ms ease;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   Applied by toggling data-theme="dark" on <html>
+   ============================================ */
+
+[data-theme="dark"] {
+    --color-bg:             #0f172a;
+    --color-surface:        #1e293b;
+    --color-surface-alt:    #273549;
+    --color-border:         #334155;
+
+    --color-text-primary:   #f1f5f9;
+    --color-text-secondary: #94a3b8;
+    --color-text-muted:     #64748b;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3),  0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   BASE STYLES — consume the tokens above
+   ============================================ */
+
 /* Basic Reset */
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
     line-height: 1.6;
+    /* Smooth the bg/text transition when toggling themes */
+    transition: background-color var(--transition-normal),
+                color var(--transition-normal);
 }
 
 #app {
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: var(--space-4);
+    gap: var(--space-6);
 }
 
+/* ============================================
+   HEADER & THEME TOGGLE BUTTON
+   ============================================ */
+
+#main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-6);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--transition-normal),
+                border-color var(--transition-normal);
+}
+
+#main-header h1 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    background-color: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast),
+                border-color var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
+#theme-toggle:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+#theme-toggle .toggle-icon {
+    font-size: var(--text-base);
+    line-height: 1;
+}
+
+/* ============================================
+   SEARCH BAR 
+   ============================================ */
+
+#search-container {
+    position: relative;
+    width: 100%;
+}
+
+#search-input {
+    width: 100%;
+    padding: var(--space-3) var(--space-4) var(--space-3) 2.75rem; /* left pad for icon */
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    outline: none;
+    transition: border-color var(--transition-fast),
+                box-shadow var(--transition-fast),
+                background-color var(--transition-normal);
+}
+
+#search-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+#search-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+/* Magnifying glass icon — pure CSS, no image dependency */
+.search-icon {
+    position: absolute;
+    left: var(--space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--color-text-muted);
+    pointer-events: none; /* clicks pass through to the input */
+    transition: color var(--transition-fast);
+}
+
+#search-container:focus-within .search-icon {
+    color: var(--color-primary);
+}
+
+/* Clear button — shown only when input has text */
+#search-clear {
+    position: absolute;
+    right: var(--space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    display: none; /* toggled by JS */
+    align-items: center;
+    justify-content: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    padding: 0;
+    font-size: var(--text-sm);
+    line-height: 1;
+    color: var(--color-text-muted);
+    background: var(--color-surface-alt);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast);
+}
+
+#search-clear:hover {
+    background-color: var(--color-danger);
+    color: var(--color-text-on-primary);
+}
+
+#search-clear.visible {
+    display: inline-flex;
+}
+
+/* No-results message */
+#search-no-results {
+    display: none; /* toggled by JS */
+    padding: var(--space-8) var(--space-4);
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+#search-no-results.visible {
+    display: block;
+}
+
+#search-no-results span {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+}
